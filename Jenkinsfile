@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm install nodemon'
                 sh 'nohup npm run start'
             }
         }
