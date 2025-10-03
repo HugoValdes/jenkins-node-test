@@ -9,8 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'npm install nodemon'
-                sh 'nohup npm run start'
+                sh 'npm install pm2 -g'
+                sh 'pm2 stop app || true' // detiene la app si ya estaba corriendo
+                sh 'pm2 start npm --name "node-app" -- run start' // inicia en background
             }
         }
     }
